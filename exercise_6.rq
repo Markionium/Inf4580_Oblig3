@@ -1,0 +1,8 @@
+#Query: Is Herb the brother of Homer?
+
+PREFIX sim: <http://www.ifi.uio.no/INF3580/simpsons#>
+PREFIX fam: <http://www.ifi.uio.no/INF3580/family#>
+
+ASK {
+    sim:Herb fam:hasBrother sim:Homer .
+}

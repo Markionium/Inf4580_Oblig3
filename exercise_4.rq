@@ -1,0 +1,22 @@
+#Query: Find all of Maggie’s grandmothers. Result variable name: ?grandmother.
+
+PREFIX sim: <http://www.ifi.uio.no/INF3580/simpsons#>
+PREFIX fam: <http://www.ifi.uio.no/INF3580/family#>
+
+SELECT ?grandmother
+WHERE {
+    { 
+        sim:Maggie fam:hasFather ?father . 
+        ?father fam:hasMother ?grandmother . 
+    }
+    UNION
+    { 
+        sim:Maggie fam:hasMother ?mother . 
+        ?mother fam:hasMother ?grandmother . 
+    }
+    UNION
+    { 
+        sim:Maggie fam:hasParent ?parent . 
+        ?parent fam:hasMother ?grandmother . 
+    }
+}

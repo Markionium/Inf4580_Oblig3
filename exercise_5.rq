@@ -1,0 +1,11 @@
+#Query: Find everyone older than 10. Order by age, oldest first. Output name and age. Result variable names: ?person, ?age. 
+
+PREFIX foaf:  <http://xmlns.com/foaf/0.1/>
+
+SELECT ?person ?age
+WHERE {
+    ?simpson foaf:name ?person .
+    ?simpson foaf:age ?age .
+    FILTER(?age > 10)
+}
+ORDER BY DESC(?age)

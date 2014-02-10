@@ -1,0 +1,12 @@
+#Query: Find everyone who has a mother or a father and list both the person and the mother or father. 
+#       Order by mother/father. Use the result variable name ?person, ?parent.
+
+PREFIX fam: <http://www.ifi.uio.no/INF3580/family#>
+
+SELECT ?person ?parent
+WHERE { 
+    { ?person fam:hasFather ?parent . }
+    UNION 
+    { ?person fam:hasMother ?parent . }
+}
+ORDER BY ?parent
